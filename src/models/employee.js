@@ -1,30 +1,16 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-mongoose
-	.connect('mongodb://127.0.0.1:27017/Employee-Management', {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useCreateIndex: true,
-		useFindAndModify: false
-	})
-	.then((success) => {
-		console.log('Database Connection Successful!!');
-	})
-	.catch((error) => {
-		console.log('Database Connection Failed!!', error);
-	});
+const Schema = mongoose.Schema;
+const ObjectId = Schema.ObjectId;
 
 const Employee = mongoose.model('Employee', {
-	empID: {
-		type: String
-	},
 	empName: {
 		type: String,
 		trim: true,
 		required: true
 	},
-	jobDescription: {
+	position: {
 		type: String,
 		trim: true
 	},

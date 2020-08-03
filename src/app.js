@@ -2,6 +2,7 @@ require('./db/mongoose.js');
 
 const express = require('express');
 const employeeRouter = require('./routers/employeeRouter');
+const managerRouter = require('./routers/manager');
 const path = require('path');
 //const exhbs = require('express-handlebars');
 const hbs = require('hbs');
@@ -27,8 +28,9 @@ app.get('', (req, res) => {
 		name: 'Akrithi'
 	});
 });
-
+app.use(bodyParser.json());
 app.use(employeeRouter);
+app.use(managerRouter);
 app.listen(port, () => {
 	console.log('Server running in port ' + port);
 });
