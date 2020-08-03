@@ -10,9 +10,9 @@ body {
 	min-height: 100vh;
 }
 
-/* .main {
+.main {
 	flex-grow: 1;
-} */
+}
 
 div.solid {
 	border-style: solid;
@@ -31,4 +31,21 @@ footer {
 header {
 	margin-top: 16px;
 	margin-bottom: 48px;
+}
+
+headerManager {
+	margin-top: 16px;
+	margin-bottom: 48px;
+}
+
+headerEmployee {
+	margin-top: 16px;
+	margin-bottom: 48px;
+}
+
+table,
+td,
+th {
+	border: 1px solid black;
+	text-align: center;
 }
