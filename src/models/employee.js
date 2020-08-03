@@ -1,4 +1,19 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
+
+mongoose
+	.connect('mongodb://127.0.0.1:27017/Employee-Management', {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useCreateIndex: true,
+		useFindAndModify: false
+	})
+	.then((success) => {
+		console.log('Database Connection Successful!!');
+	})
+	.catch((error) => {
+		console.log('Database Connection Failed!!', error);
+	});
 
 const Employee = mongoose.model('Employee', {
 	empID: {
@@ -41,6 +56,7 @@ const Employee = mongoose.model('Employee', {
 module.exports = Employee;
 
 // const emp = new Employee({
+// 	empID: 'e1',
 // 	empName: 'Akrithi',
 // 	jobDescription: 'MD',
 // 	email: 'shetty@gmail.com',
@@ -52,3 +68,7 @@ module.exports = Employee;
 // 		console.log(emp);
 // 	})
 // 	.catch((e) => console.log(e));
+
+// const Leave = mongoose.model('Leave',{
+// 	empID :
+// })
