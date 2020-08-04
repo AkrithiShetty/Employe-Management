@@ -1,7 +1,8 @@
 require('./db/mongoose.js');
 
 const express = require('express');
-const employeeRouter = require('./routers/employeeRouter');
+const index = require('./routers/index');
+const employeeRouter = require('./routers/employee');
 const managerRouter = require('./routers/manager');
 const path = require('path');
 //const exhbs = require('express-handlebars');
@@ -22,15 +23,12 @@ app.set('views', viewPath);
 hbs.registerPartials(partialPath);
 
 app.use(express.static(publicDirectory));
-app.get('', (req, res) => {
-	res.render('index', {
-		title: 'Employee Management',
-		name: 'Akrithi'
-	});
-});
+
 app.use(bodyParser.json());
-app.use(employeeRouter);
-app.use(managerRouter);
+app.use('/', index);
+app.use('/employee', employeeRouter);
+app.use('/manager', managerRouter);
+
 app.listen(port, () => {
 	console.log('Server running in port ' + port);
 });
