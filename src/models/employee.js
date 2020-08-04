@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const Employee = mongoose.model('Employee', {
-	empName: {
+	name: {
 		type: String,
 		trim: true,
 		required: true
@@ -23,7 +23,7 @@ const Employee = mongoose.model('Employee', {
 			}
 		}
 	},
-	phoneNo: {
+	phone: {
 		type: Number,
 		required: true,
 		trim: true,

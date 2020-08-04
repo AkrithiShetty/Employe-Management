@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Employees</title>
+    <link rel='stylesheet' href='/css/style-sheet.css'>
+</head>
+
+<body>
+    {{>headerEmployee}}
+
+    <form action="/employee" method="post" autocomplete="off"></form>
+
+    <div class="solid"></div>
+    <input type="hidden" name="_id" value="{{employee._id}}">
+    <label>Name : </label>
+    <input type="text" name="name" placeholder="Full Name" value="{{employee.name}}">
+    <label>Email : </label>
+    <input type="text" name="email" placeholder="Email" value="{{employee.email}}">
+    <label>Position : </label>
+    <input type="text" name="position" placeholder="Position" value="{{employee.position}}">
+    <label> Phone : </label>
+    <input type="number" name="phone" placeholder="Phone Number" value="{{employee.phone}}">
+    <button> Submit</button>
+    </div>
+
+    </form>
+    {{>footer}}
+</body>
+
+</html>

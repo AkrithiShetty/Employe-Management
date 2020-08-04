@@ -23,12 +23,15 @@ app.set('views', viewPath);
 hbs.registerPartials(partialPath);
 
 app.use(express.static(publicDirectory));
-
+app.get('/', (req, res) => {
+	res.render('index', {
+		title: 'Employee Management',
+		name: 'Akrithi'
+	});
+});
 app.use(bodyParser.json());
-app.use('/', index);
-app.use('/employee', employeeRouter);
-app.use('/manager', managerRouter);
-
+app.use(employeeRouter);
+app.use(managerRouter);
 app.listen(port, () => {
 	console.log('Server running in port ' + port);
 });
