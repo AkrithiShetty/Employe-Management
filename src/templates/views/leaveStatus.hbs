@@ -12,23 +12,24 @@
         <thead>
             <tr>
                 <th>Employee ID </th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Job description</th>
-                <th>Phone no</th>
-                <th>Salary</th>
-
+                <th>Name</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Reason</th>
+                <th>Phone</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
             {{#each list}}
-            <tr>
+            <tr t>
                 <td>{{this.empId}}</td>
                 <td>{{this.name}}</td>
-                <td>{{this.email}}</td>
-                <td>{{this.position}}</td>
+                <td>{{this.fromDate}}</td>
+                <td>{{this.toDate}}</td>
+                <td>{{this.reason}}</td>
                 <td>{{this.phone}}</td>
-                <td>{{this.salary}}</td>
+                <td>{{this.status}}</td>
 
             </tr>
             {{/each}}

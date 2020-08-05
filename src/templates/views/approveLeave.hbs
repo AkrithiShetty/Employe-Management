@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Leave
+    </title>
+    <link rel='stylesheet' href='/css/style-sheet.css'>
+</head>
+
+<body>
+    {{>headerManager}}
+    <div class="solid">
+        <form action="/approveLeave" method="post" autocomplete="off">
+            <input type="hidden" name="_id" value="{{leave._id}}">
+            <label>Employee ID : </label>
+            <input type="text" name="empId" value="{{leave.empId}}"><br><br>
+
+            <input type="radio" name="approve" value="Approve">
+            <label>Approve</label><br>
+
+            <input type="radio" name="approve" value="Reject">
+            <label>Reject</label><br>
+            <button> Submit</button>
+        </form>
+    </div>
+
+    {{>footer}}
+
+</body>
+
+</html>

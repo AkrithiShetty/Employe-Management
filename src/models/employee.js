@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
-
 const Employee = mongoose.model('Employee', {
+	empId: {
+		type: String,
+		trim: true
+	},
 	name: {
 		type: String,
 		trim: true,
@@ -12,7 +13,8 @@ const Employee = mongoose.model('Employee', {
 	},
 	position: {
 		type: String,
-		trim: true
+		trim: true,
+		required: true
 	},
 	email: {
 		type: String,

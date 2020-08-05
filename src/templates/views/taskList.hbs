@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Employees</title>
+    <link rel='stylesheet' href='/css/style-sheet.css'>
+</head>
+
+<body>
+    {{>headerManager}}
+    <form action="/task" method="POST">
+        <table border="2px">
+            <thead>
+                <tr>
+                    <th>Employee ID </th>
+                    <th>Task Id</th>
+                    <th>Task Description</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each list}}
+                <tr>
+                    <td>{{this.empId}}</td>
+                    <td>{{this.taskId}}</td>
+                    <td>{{this.taskName}}</td>
+                    <td><input type="number" value="{{this.status}}">{{this.status}} </td>
+                    <td><button>Save</button></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{>footer}}
+    </form>
+</body>
+
+</html>

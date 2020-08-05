@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    {{>headerEmployee}}
+    {{>headerManager}}
     <table border="2px">
         <thead>
             <tr>
@@ -29,7 +29,9 @@
                 <td>{{this.position}}</td>
                 <td>{{this.phone}}</td>
                 <td>{{this.salary}}</td>
-
+                <td>
+                    <a href="/manager/{{this._id}}">Edit</i></a>
+                </td>
             </tr>
             {{/each}}
         </tbody>

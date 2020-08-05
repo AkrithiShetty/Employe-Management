@@ -11,25 +11,25 @@
     <table border="2px">
         <thead>
             <tr>
-                <th>Employee ID </th>
                 <th>Full Name</th>
                 <th>Email</th>
                 <th>Job description</th>
                 <th>Phone no</th>
-                <th>Salary</th>
 
             </tr>
         </thead>
         <tbody>
             {{#each list}}
             <tr>
-                <td>{{this.empId}}</td>
                 <td>{{this.name}}</td>
                 <td>{{this.email}}</td>
                 <td>{{this.position}}</td>
                 <td>{{this.phone}}</td>
-                <td>{{this.salary}}</td>
-
+                <td>
+                    <a href="/edit/{{this._id}}">Edit</i></a>
+                    <a href="/edit/delete/{{this._id}}"
+                        onclick="return confirm('Are you sure to delete this record ?');">Delete</a>
+                </td>
             </tr>
             {{/each}}
         </tbody>

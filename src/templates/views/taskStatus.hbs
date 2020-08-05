@@ -7,28 +7,24 @@
 </head>
 
 <body>
-    {{>headerEmployee}}
+    {{>headerManager}}
     <table border="2px">
         <thead>
             <tr>
                 <th>Employee ID </th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Job description</th>
-                <th>Phone no</th>
-                <th>Salary</th>
-
+                <th>Task ID</th>
+                <th>Task Description</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
             {{#each list}}
-            <tr>
+            <tr t>
                 <td>{{this.empId}}</td>
-                <td>{{this.name}}</td>
-                <td>{{this.email}}</td>
-                <td>{{this.position}}</td>
-                <td>{{this.phone}}</td>
-                <td>{{this.salary}}</td>
+                <td>{{this.taskId}}</td>
+                <td>{{this.taskName}}</td>
+                <td>{{this.status}}</td>
+
 
             </tr>
             {{/each}}

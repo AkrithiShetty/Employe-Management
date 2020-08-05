@@ -11,31 +11,18 @@
 
 
 
-        <form action="/employee" method="POST">
-            <div class="body">
-                <label>Full Name :</label>
-                <input type="text" name="fullName" placeholder="Full Name" value="">
-            </div>
-            <br>
-            <div class="body">
-                <label>Email :</label>
-                <input type="text" name="email" placeholder="Full Name" value="">
-            </div>
-            <br>
-            <div class="body">
-                <label>Job Description :</label>
-                <input type="text" name="Job Description" placeholder="Full Name" value="">
-            </div>
-            <br>
-            <div class="body">
-                <label>Phone :</label>
-                <input type="text" name="Phone" placeholder="Full Name" value="">
-            </div>
-            <br>
-            <div class="body">
-                <button>Submit</button>
+        <form action="/manager" method="POST">
 
-            </div>
+            <input type="hidden" name="_id" value="{{employee._id}}">
+            <label>Employee ID:</label>
+            <input type="text" name="empId" placeholder="Full Name" value="{{employee.empId}}"><br><br>
+
+            <label>Salary :</label>
+            <input type="text" name="salary" placeholder="Full Name" value="{{employee.salary}}">
+            <br><br>
+            <button>Submit</button>
+
+
         </form>
     </div>
     {{>footer}}
