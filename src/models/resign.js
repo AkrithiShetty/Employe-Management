@@ -1,16 +1,29 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-const Leave = mongoose.model('Leave', {
+const Resign = mongoose.model('Resign', {
 	empId: {
 		type: String,
-		trim: true,
-		require: true
+		trim: true
 	},
 	name: {
 		type: String,
 		trim: true,
 		required: true
+	},
+	position: {
+		type: String,
+		trim: true,
+		required: true
+	},
+	email: {
+		type: String,
+		trim: true,
+		validate(value) {
+			if (!validator.isEmail(value)) {
+				throw new Error('Email is invalid');
+			}
+		}
 	},
 	phone: {
 		type: Number,
@@ -22,26 +35,11 @@ const Leave = mongoose.model('Leave', {
 			}
 		}
 	},
-	toDate: {
-		type: String,
-		trim: true,
-		required: true
-	},
-	fromDate: {
-		type: String,
-		trim: true,
-		required: true
-	},
-
 	reason: {
 		type: String,
-		required: true,
-		trim: true
-	},
-	status: {
-		type: String,
-		default: 'Pending'
+		trim: true,
+		required: true
 	}
 });
 
-module.exports = Leave;
+module.exports = Resign;

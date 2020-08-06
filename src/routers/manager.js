@@ -2,6 +2,7 @@ const express = require('express');
 const Employee = require('../models/employee');
 const Leave = require('../models/leave');
 const Task = require('../models/task');
+const Resign = require('../models/resign');
 router = express.Router();
 
 router.get('/manager', (req, res) => {
@@ -118,6 +119,20 @@ router.get('/taskDetails', (req, res) => {
 		.then((data) => {
 			res.render('taskStatus', {
 				title: 'Task Status ',
+				name: 'Akrithi',
+				list: data
+			});
+		})
+		.catch((e) => {
+			console.log('Error in retrieving leave list :' + e);
+		});
+});
+
+router.get('/resignedEmployees', (req, res) => {
+	Resign.find({})
+		.then((data) => {
+			res.render('resignedEmployees', {
+				title: 'Resign ',
 				name: 'Akrithi',
 				list: data
 			});

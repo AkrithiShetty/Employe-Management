@@ -4,7 +4,7 @@ body {
 	max-width: 650px;
 	margin: 0 auto;
 	padding: 0 16px;
-
+	align-self: center;
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
@@ -14,12 +14,21 @@ body {
 	flex-grow: 1;
 }
 
+#index {
+	color: blue;
+}
+
 div.solid {
 	border-style: solid;
 	padding-left: 25px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	width: 50%;
+	text-align: justify;
+}
+
+div.center {
+	text-align: center;
 }
 
 footer {
@@ -30,16 +39,21 @@ footer {
 }
 
 header {
+	border: #888888 solid;
 	margin-top: 16px;
 	margin-bottom: 48px;
 }
 
 headerManager {
+	background-color: antiquewhite;
+	border: #333333 solid;
 	margin-top: 16px;
 	margin-bottom: 48px;
 }
 
 headerEmployee {
+	background-color: antiquewhite;
+	border: #333333 solid;
 	margin-top: 16px;
 	margin-bottom: 48px;
 }

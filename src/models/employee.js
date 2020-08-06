@@ -42,21 +42,3 @@ const Employee = mongoose.model('Employee', {
 });
 
 module.exports = Employee;
-
-// const emp = new Employee({
-// 	empID: 'e1',
-// 	empName: 'Akrithi',
-// 	jobDescription: 'MD',
-// 	email: 'shetty@gmail.com',
-// 	phoneNo: '1234556789'
-// });
-// emp
-// 	.save()
-// 	.then(() => {
-// 		console.log(emp);
-// 	})
-// 	.catch((e) => console.log(e));
-
-// const Leave = mongoose.model('Leave',{
-// 	empID :
-// })

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Employees</title>
+    <link rel='stylesheet' href='/css/style-sheet.css'>
+</head>
+
+<body>
+    {{>headerEmployee}}
+    <div class="main">
+        <div class="solid">
+            <form action="/resign" method="post" autocomplete="off">
+                <input type="hidden" name="_id" value="{{resign._id}}">
+                <label>Employee Id : </label>
+                <input type="text" name="empId" value="{{resign.empId}}"><br><br>
+                <label>Name : </label>
+                <input type="text" name="name" value="{{resign.name}}"><br><br>
+                <label>Email : </label>
+                <input type="email" name="email" value="{{resign.email}}"><br><br>
+                <label>Position : </label>
+                <input type="text" name="position" value="{{resign.position}}"><br><br>
+                <label> Phone : </label>
+                <input type="number" name="phone" value="{{resign.phone}}"><br><br>
+                <label>Reason : </label>
+                <input type="text" name="reason" value="{{resign.reason}}"><br><br>
+                <div class="center"><button> Submit</button></div>
+            </form>
+        </div>
+    </div>
+    {{>footer}}
+</body>
+
+</html>

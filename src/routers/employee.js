@@ -2,6 +2,7 @@ const express = require('express');
 const Employee = require('../models/employee');
 const Leave = require('../models/leave');
 const Task = require('../models/task');
+const Resign = require('../models/resign');
 const bodyParser = require('body-parser');
 const router = express.Router();
 
@@ -146,7 +147,6 @@ router.post('/leave', (req, res) => {
 		name,
 		fromDate,
 		toDate,
-
 		reason,
 		phone
 	});
@@ -228,6 +228,61 @@ router.post('/task', (req, res) => {
 			} else console.log('Error during record update : ' + err);
 		}
 	);
+});
+
+router.get('/resign', (req, res) => {
+	res.render('resign', {
+		title: 'Resign',
+		name: 'Akrithi'
+	});
+});
+
+router.post('/resign', (req, res) => {
+	const empId = req.body.empId;
+	const name = req.body.name;
+	const email = req.body.email;
+	const position = req.body.position;
+	const phone = req.body.phone;
+	const reason = req.body.reason;
+
+	const data = new Resign({
+		empId,
+		name,
+		position,
+		email,
+		phone,
+		reason
+	});
+	console.log(data);
+	data
+		.save()
+		.then((success) => {
+			res.redirect('/resign');
+		})
+		.catch((e) => {
+			console.log('Error during record resigning : ' + e);
+		});
+	Employee.findOneAndDelete(empId)
+		.then((success) => {
+			console.log('successfull');
+		})
+		.catch((e) => {
+			console.log(e);
+		});
+	Leave.findOneAndDelete(empId)
+		.then((success) => {
+			console.log('successfull');
+		})
+		.catch((e) => {
+			console.log(e);
+		});
+	Task.findOneAndDelete(empId)
+		.then((success) => {
+			console.log('successfull');
+		})
+		.catch((e) => {
+			console.log(e);
+		});
 });
 
 module.exports = router;

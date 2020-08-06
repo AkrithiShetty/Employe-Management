@@ -23,7 +23,7 @@ const Task = mongoose.model('Task', {
 	},
 	status: {
 		type: Number,
-
+		default: 0,
 		trim: true,
 		validate(value) {
 			if (value > 100) {
