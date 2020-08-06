@@ -77,6 +77,17 @@ router.get('/employee/:id', (req, res) => {
 	});
 });
 
+router.get('/view/:id', (req, res) => {
+	Employee.findById(req.params.id, (err, doc) => {
+		if (!err) {
+			res.render('viewEmployee', {
+				title: 'Employee',
+				employee: doc
+			});
+		}
+	});
+});
+
 router.get('/list', (req, res) => {
 	Employee.find((error, data) => {
 		if (!error) {

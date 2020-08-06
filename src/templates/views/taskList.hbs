@@ -13,6 +13,7 @@
             <thead>
                 <tr>
                     <th>Employee ID </th>
+                    <th>Employee Name</th>
                     <th>Task Id</th>
                     <th>Task Description</th>
                     <th>Status</th>
@@ -22,6 +23,7 @@
                 {{#each list}}
                 <tr>
                     <td>{{this.empId}}</td>
+                    <td>{{this.name}}</td>
                     <td>{{this.taskId}}</td>
                     <td>{{this.taskName}}</td>
                     <td>{{this.status}}</td>
