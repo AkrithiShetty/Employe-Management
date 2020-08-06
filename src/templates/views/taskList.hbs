@@ -7,8 +7,8 @@
 </head>
 
 <body>
-    {{>headerManager}}
-    <form action="/task" method="POST">
+    {{>headerEmployee}}
+    <div class="main">
         <table border="2px">
             <thead>
                 <tr>
@@ -24,14 +24,15 @@
                     <td>{{this.empId}}</td>
                     <td>{{this.taskId}}</td>
                     <td>{{this.taskName}}</td>
-                    <td><input type="number" value="{{this.status}}">{{this.status}} </td>
-                    <td><button>Save</button></td>
+                    <td>{{this.status}}</td>
+                    <td><a href="/saveStatus/{{this._id}}">Add Status</a></td>
                 </tr>
                 {{/each}}
             </tbody>
         </table>
-        {{>footer}}
-    </form>
+    </div>
+    {{>footer}}
+
 </body>
 
 </html>

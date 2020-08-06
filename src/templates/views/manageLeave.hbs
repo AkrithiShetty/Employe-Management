@@ -8,34 +8,36 @@
 
 <body>
     {{>headerManager}}
-    <table border="2px">
-        <thead>
-            <tr>
-                <th>Employee ID </th>
-                <th>Name</th>
-                <th>From Date</th>
-                <th>To Date</th>
-                <th>Reason</th>
-                <th>Phone</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each list}}
-            <tr t>
-                <td>{{this.empId}}</td>
-                <td>{{this.name}}</td>
-                <td>{{this.fromDate}}</td>
-                <td>{{this.toDate}}</td>
-                <td>{{this.reason}}</td>
-                <td>{{this.phone}}</td>
-                <td>{{this.status}}</td>
-                <td> <a href="/approveLeave/{{this._id}}">Process</i></a> </td>
+    <div class="main">
+        <table>
+            <thead>
+                <tr>
+                    <th>Employee ID </th>
+                    <th>Name</th>
+                    <th>From Date</th>
+                    <th>To Date</th>
+                    <th>Reason</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each list}}
+                <tr t>
+                    <td>{{this.empId}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.fromDate}}</td>
+                    <td>{{this.toDate}}</td>
+                    <td>{{this.reason}}</td>
+                    <td>{{this.phone}}</td>
+                    <td>{{this.status}}</td>
+                    <td> <a href="/approveLeave/{{this._id}}">Process</i></a> </td>
 
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
     {{>footer}}
 </body>
 

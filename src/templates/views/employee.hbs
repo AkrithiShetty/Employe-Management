@@ -8,19 +8,21 @@
 
 <body>
     {{>headerEmployee}}
-    <div class="solid">
-        <form action="/employee" method="post" autocomplete="off">
-            <input type="hidden" name="_id" value="{{employee._id}}">
-            <label>Name : </label>
-            <input type="text" name="name" placeholder="Full Name" value="{{employee.name}}"><br><br>
-            <label>Email : </label>
-            <input type="text" name="email" placeholder="Email" value="{{employee.email}}"><br><br>
-            <label>Position : </label>
-            <input type="text" name="position" placeholder="Position" value="{{employee.position}}"><br><br>
-            <label> Phone : </label>
-            <input type="number" name="phone" placeholder="Phone Number" value="{{employee.phone}}"><br><br>
-            <button> Submit</button>
-        </form>
+    <div class="main">
+        <div class="solid">
+            <form action="/employee" method="post" autocomplete="off">
+                <input type="hidden" name="_id" value="{{employee._id}}">
+                <label>Name : </label>
+                <input type="text" name="name" placeholder="Full Name" value="{{employee.name}}"><br><br>
+                <label>Email : </label>
+                <input type="email" name="email" placeholder="Email" value="{{employee.email}}"><br><br>
+                <label>Position : </label>
+                <input type="text" name="position" placeholder="Position" value="{{employee.position}}"><br><br>
+                <label> Phone : </label>
+                <input type="number" name="phone" placeholder="Phone Number" value="{{employee.phone}}"><br><br>
+                <button> Submit</button>
+            </form>
+        </div>
     </div>
     {{>footer}}
 </body>

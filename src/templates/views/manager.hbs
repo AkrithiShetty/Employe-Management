@@ -7,23 +7,22 @@
 
 <body>
     {{>headerManager}}
-    <div class="solid">
-
-
-
-        <form action="/manager" method="POST">
-
-            <input type="hidden" name="_id" value="{{employee._id}}">
-            <label>Employee ID:</label>
-            <input type="text" name="empId" placeholder="Full Name" value="{{employee.empId}}"><br><br>
-
-            <label>Salary :</label>
-            <input type="text" name="salary" placeholder="Full Name" value="{{employee.salary}}">
-            <br><br>
-            <button>Submit</button>
-
-
-        </form>
+    <div class="main">
+        <div class="solid">
+            <form action="/manager" method="POST">
+                <input type="hidden" name="_id" value="{{employee._id}}">
+                <label>Employee ID:</label>
+                <input type="text" name="empId" value="{{employee.empId}}"><br><br>
+                <label>Name : </label>{{employee.name}}<br><br>
+                <label>Email : </label>{{employee.email}}<br><br>
+                <label>Position : </label>{{employee.position}}<br><br>
+                <label> Phone : </label>{{employee.phone}}<br><br>
+                <label>Salary :</label>
+                <input type="text" name="salary" value="{{employee.salary}}">
+                <br><br>
+                <button>Submit</button>
+            </form>
+        </div>
     </div>
     {{>footer}}
 </body>

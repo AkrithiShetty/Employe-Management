@@ -11,6 +11,11 @@ const Task = mongoose.model('Task', {
 		trim: true,
 		required: true
 	},
+	name: {
+		type: String,
+		trim: true,
+		required: true
+	},
 	taskName: {
 		type: String,
 		trim: true,
@@ -18,7 +23,13 @@ const Task = mongoose.model('Task', {
 	},
 	status: {
 		type: Number,
-		trim: true
+
+		trim: true,
+		validate(value) {
+			if (value > 100) {
+				throw new Error('Status cannot be greater than 100');
+			}
+		}
 	}
 });
 

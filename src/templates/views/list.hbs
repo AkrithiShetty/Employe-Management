@@ -8,32 +8,34 @@
 
 <body>
     {{>headerEmployee}}
-    <table border="2px">
-        <thead>
-            <tr>
-                <th>Employee ID </th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Job description</th>
-                <th>Phone no</th>
-                <th>Salary</th>
+    <div class="main">
+        <table border="2px">
+            <thead>
+                <tr>
+                    <th>Employee ID </th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Job description</th>
+                    <th>Phone no</th>
+                    <th>Salary</th>
 
-            </tr>
-        </thead>
-        <tbody>
-            {{#each list}}
-            <tr>
-                <td>{{this.empId}}</td>
-                <td>{{this.name}}</td>
-                <td>{{this.email}}</td>
-                <td>{{this.position}}</td>
-                <td>{{this.phone}}</td>
-                <td>{{this.salary}}</td>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each list}}
+                <tr>
+                    <td>{{this.empId}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.email}}</td>
+                    <td>{{this.position}}</td>
+                    <td>{{this.phone}}</td>
+                    <td>{{this.salary}}</td>
 
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
     {{>footer}}
 </body>
 

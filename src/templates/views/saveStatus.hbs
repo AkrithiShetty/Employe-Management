@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Employees</title>
+    <link rel='stylesheet' href='/css/style-sheet.css'>
+</head>
+
+<body>
+    {{>headerEmployee}}
+    <div class="main">
+        <div class="solid">
+            <form action="/task" method="POST" autocomplete="off">
+                <input type="hidden" name="_id" value="{{task._id}}">
+                <label>Employee ID : </label>{{task.empId}}<br><br>
+
+                <label>Task Id : </label>{{task.taskId}}<br><br>
+
+                <label>Task Description : </label>{{task.taskName}}<br><br>
+
+                <label>Status : </label><input type="number" name="status" value="{{task.status}}"><br><br>
+
+                <button>Save</button>
+
+            </form>
+        </div>
+    </div>
+    {{>footer}}
+</body>
+
+</html>

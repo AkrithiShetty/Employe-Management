@@ -1,7 +1,6 @@
 require('./db/mongoose.js');
 
 const express = require('express');
-const index = require('./routers/index');
 const employeeRouter = require('./routers/employee');
 const managerRouter = require('./routers/manager');
 const path = require('path');

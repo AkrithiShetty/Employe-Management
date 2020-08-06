@@ -10,19 +10,22 @@
 
 <body>
     {{>headerManager}}
-    <div class="solid">
-        <form action="/updateTask" method="post" autocomplete="off">
-            <input type="hidden" name="_id" value="{{task._id}}">
-            <label>Employee ID : </label>
-            <input type="text" name="empId" value="{{task.empId}}"><br><br>
-            <label>Task ID : </label>
-            <input type="text" name="taskId" value="{{task.name}}"><br><br>
-            <label>Task Name : </label>
-            <input type="text" name="taskName" value="{{task.taskName}}"><br><br>
-            <button> Submit</button>
-        </form>
+    <div class="main">
+        <div class="solid">
+            <form action="/updateTask" method="post" autocomplete="off">
+                <input type="hidden" name="_id" value="{{task._id}}">
+                <label>Employee ID : </label>
+                <input type="text" name="empId" value="{{task.empId}}"><br><br>
+                <label>Employee Name : </label>
+                <input type="text" name="name" value="{{task.name}}"><br><br>
+                <label>Task ID : </label>
+                <input type="text" name="taskId" value="{{task.name}}"><br><br>
+                <label>Task Name : </label>
+                <input type="text" name="taskName" value="{{task.taskName}}"><br><br>
+                <button> Submit</button>
+            </form>
+        </div>
     </div>
-
     {{>footer}}
 
 </body>

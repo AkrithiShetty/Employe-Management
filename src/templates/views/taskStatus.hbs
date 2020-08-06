@@ -8,28 +8,32 @@
 
 <body>
     {{>headerManager}}
-    <table border="2px">
-        <thead>
-            <tr>
-                <th>Employee ID </th>
-                <th>Task ID</th>
-                <th>Task Description</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each list}}
-            <tr t>
-                <td>{{this.empId}}</td>
-                <td>{{this.taskId}}</td>
-                <td>{{this.taskName}}</td>
-                <td>{{this.status}}</td>
+    <div class="main">
+        <table border="2px">
+            <thead>
+                <tr>
+                    <th>Employee ID </th>
+                    <th>Employee Name</th>
+                    <th>Task ID</th>
+                    <th>Task Description</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each list}}
+                <tr t>
+                    <td>{{this.empId}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.taskId}}</td>
+                    <td>{{this.taskName}}</td>
+                    <td>{{this.status}}</td>
 
 
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
     {{>footer}}
 </body>
 

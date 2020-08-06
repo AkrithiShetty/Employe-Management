@@ -9,20 +9,6 @@ router.get('/employee', (req, res) => {
 	res.render('employee', { title: 'Insert Employee', name: 'Akrithi' });
 });
 
-router.get('/list', (req, res) => {
-	Employee.find({})
-		.then((data) => {
-			res.render('list', {
-				title: 'Employees',
-				name: 'Akrithi',
-				list: data
-			});
-		})
-		.catch((e) => {
-			console.log('Error in retrieving employee list :' + e);
-		});
-});
-
 router.use(
 	bodyParser.urlencoded({
 		extended: true
@@ -31,6 +17,11 @@ router.use(
 router.use(bodyParser.json());
 
 router.post('/employee', (req, res) => {
+	if (req.body._id == '') insertRecord(req, res);
+	else updateRecord(req, res);
+});
+
+const insertRecord = (req, res) => {
 	const name = req.body.name;
 	const email = req.body.email;
 	const position = req.body.position;
@@ -47,35 +38,44 @@ router.post('/employee', (req, res) => {
 		.save()
 		.then((success) => {
 			console.log('Success');
-			res.render('employee', { title: 'Employees', name: 'Akrithi' });
+			res.redirect('list');
 		})
 		.catch((e) => {
 			console.log('Error during record insertion : ' + e);
 		});
-});
+};
 
 const updateRecord = (req, res) => {
-	Employee.findByIdAndUpdate(
-		req.params.id,
-		{
-			$set: {
-				name: req.body.name,
-				email: req.body.email,
-				position: req.body.position,
-				phone: req.body.phone
-			}
-		},
+	Employee.findOneAndUpdate(
+		{ _id: req.body._id },
+		req.body,
+		{ new: true },
 		(err, doc) => {
 			if (!err) {
-				res.render('employee', {
-					title: 'Update Employee',
-					name: 'Akrithi',
-					employee: doc
-				});
+				res.redirect('list');
+			} else {
+				if (err.name == 'ValidationError') {
+					handleValidationError(err, req.body);
+					res.render('editOrUpdate', {
+						title: 'Update Employee',
+						employee: req.body
+					});
+				} else console.log('Error during record update : ' + err);
 			}
 		}
 	);
 };
+
+router.get('/employee/:id', (req, res) => {
+	Employee.findById(req.params.id, (err, doc) => {
+		if (!err) {
+			res.render('employee', {
+				title: 'Update Employee',
+				employee: doc
+			});
+		}
+	});
+});
 
 router.get('/list', (req, res) => {
 	Employee.find((error, data) => {
@@ -105,34 +105,12 @@ router.get('/edit', (req, res) => {
 	});
 });
 
-router.get('/edit/:id', (req, res) => {
-	Employee.findByIdAndUpdate(
-		req.params.id,
-		{
-			$set: {
-				name: req.body.name,
-				address: req.body.address,
-				position: req.body.position
-			}
-		},
-		(err, doc) => {
-			if (!err) {
-				res.render('employee', {
-					title: 'Update Employee',
-					name: 'Akrithi',
-					employee: doc
-				});
-			}
-		}
-	);
-});
-
 router.get('/edit/delete/:id', (req, res) => {
-	Employee.findByIdAndDelete(req.params.id, (data, error) => {
-		if (!error) {
-			res.render('editOrUpdate');
+	Employee.findByIdAndRemove(req.params.id, (err, doc) => {
+		if (!err) {
+			res.redirect('/list');
 		} else {
-			console.log('Error in employee delete :' + error);
+			console.log('Error in employee delete :' + err);
 		}
 	});
 });
@@ -161,6 +139,16 @@ router.post('/leave', (req, res) => {
 		reason,
 		phone
 	});
+	Employee.findOneAndUpdate(
+		{ _id: req.body._id },
+		req.body,
+		{ new: true },
+		(err, doc) => {
+			if (!err) {
+				res.redirect('editOrUpdate');
+			} else console.log('Error during record update : ' + err);
+		}
+	);
 	console.log(data);
 	data
 		.save()
@@ -200,40 +188,35 @@ router.get('/task', (req, res) => {
 	});
 });
 
-router.post('/task', (req, res) => {
-	const empId = req.body.empId;
-	const taskId = req.body.taskId;
-	const taskName = req.body.taskName;
-	const status = req.body;
-
-	const data = new Task({
-		empId,
-		taskId,
-		taskName,
-		status
+router.get('/saveStatus', (req, res) => {
+	res.render('saveStatus', {
+		title: 'Task',
+		name: 'Akrithi'
 	});
-	console.log(data);
-	data
-		.save()
-		.then((success) => {
-			res.render('taskList', { title: 'Apply Leave', name: 'Akrithi' });
-		})
-		.catch((e) => {
-			console.log('Error during record insertion : ' + e);
-		});
 });
 
-router.get('/task', (req, res) => {
-	Task.find({})
-		.then((data) => {
-			res.render('tasklist', {
-				title: 'Manager',
-				name: 'Akrithi',
-				list: data
+router.get('/saveStatus/:id', (req, res) => {
+	Task.findById(req.params.id, (err, doc) => {
+		if (!err) {
+			res.render('saveStatus', {
+				title: 'Task',
+				task: doc
 			});
-		})
-		.catch((e) => {
-			console.log('Error in retrieving employee list :' + e);
-		});
+		}
+	});
 });
+
+router.post('/task', (req, res) => {
+	Task.findOneAndUpdate(
+		{ _id: req.body._id },
+		req.body,
+		{ new: true },
+		(err, doc) => {
+			if (!err) {
+				res.redirect('/task');
+			} else console.log('Error during record update : ' + err);
+		}
+	);
+});
+
 module.exports = router;
