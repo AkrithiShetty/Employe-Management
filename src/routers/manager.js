@@ -129,7 +129,7 @@ router.get('/taskDetails', (req, res) => {
 });
 
 router.get('/resignedEmployees', (req, res) => {
-	Resign.find({})
+	Employee.find({})
 		.then((data) => {
 			res.render('resignedEmployees', {
 				title: 'Resign ',

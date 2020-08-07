@@ -10,7 +10,7 @@
     {{>headerEmployee}}
     <div class="main">
         <div class="solid">
-            <form action="/employee" method="post" autocomplete="off">
+            <form name="login" action="/employee" method="post" autocomplete="off">
                 <input type="hidden" name="_id" value="{{employee._id}}">
                 <label>Name : </label>
                 <input type="text" name="name" placeholder="Full Name" value="{{employee.name}}"><br><br>

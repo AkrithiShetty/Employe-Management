@@ -38,6 +38,10 @@ const Employee = mongoose.model('Employee', {
 	salary: {
 		type: Number,
 		trim: true
+	},
+	status: {
+		type: String,
+		default: 'Active'
 	}
 });
 

@@ -2,7 +2,6 @@ const express = require('express');
 const Employee = require('../models/employee');
 const Leave = require('../models/leave');
 const Task = require('../models/task');
-const Resign = require('../models/resign');
 const bodyParser = require('body-parser');
 const router = express.Router();
 
@@ -231,58 +230,51 @@ router.post('/task', (req, res) => {
 });
 
 router.get('/resign', (req, res) => {
+	Employee.find((error, data) => {
+		if (!error) {
+			res.render('applyResignation', {
+				title: 'Employees',
+				name: 'Akrithi',
+				list: data
+			});
+		} else {
+			console.log('Error in retrieving employee list :' + error);
+		}
+	});
+});
+
+router.get('/applyResign', (req, res) => {
 	res.render('resign', {
 		title: 'Resign',
 		name: 'Akrithi'
 	});
 });
 
-router.post('/resign', (req, res) => {
-	const empId = req.body.empId;
-	const name = req.body.name;
-	const email = req.body.email;
-	const position = req.body.position;
-	const phone = req.body.phone;
-	const reason = req.body.reason;
-
-	const data = new Resign({
-		empId,
-		name,
-		position,
-		email,
-		phone,
-		reason
+router.get('/applyResign/:id', (req, res) => {
+	Employee.findById(req.params.id, (err, doc) => {
+		if (!err) {
+			res.render('resign', {
+				title: 'Resign',
+				employee: doc
+			});
+		}
 	});
-	console.log(data);
-	data
-		.save()
-		.then((success) => {
-			res.redirect('/resign');
-		})
-		.catch((e) => {
-			console.log('Error during record resigning : ' + e);
-		});
-	Employee.findOneAndDelete(empId)
-		.then((success) => {
-			console.log('successfull');
-		})
-		.catch((e) => {
-			console.log(e);
-		});
-	Leave.findOneAndDelete(empId)
-		.then((success) => {
-			console.log('successfull');
-		})
-		.catch((e) => {
-			console.log(e);
-		});
-	Task.findOneAndDelete(empId)
-		.then((success) => {
-			console.log('successfull');
-		})
-		.catch((e) => {
-			console.log(e);
-		});
+});
+
+router.post('/resign', (req, res) => {
+	const status = req.body.status;
+	console.log(status);
+	Employee.findOneAndUpdate(
+		{ _id: req.body._id },
+		{ status },
+		{ new: true },
+		(err, doc) => {
+			if (!err) {
+				console.log(doc);
+				res.redirect('/resign');
+			} else console.log('Error during record update : ' + err);
+		}
+	);
 });
 
 module.exports = router;

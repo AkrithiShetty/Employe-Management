@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    {{>headerManager}}
+    {{>headerEmployee}}
     <div class="main">
         <table border="2px">
             <thead>
@@ -31,6 +31,7 @@
                     <td>{{this.phone}}</td>
                     <td>{{this.salary}}</td>
                     <td>{{this.status}}</td>
+                    <td><a href="/applyResign/{{this._id}}">Resign</i></a></td>
                 </tr>
                 {{/each}}
             </tbody>
